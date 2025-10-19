@@ -1,11 +1,15 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
+import { EmployeesModule } from './employees/employees.module';
+import { ProfilesModule } from './profiles/profiles.module';
 
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/db-nest-api'),
     UsersModule,
+    EmployeesModule,
+    ProfilesModule,
   ],
 })
 export class AppModule {}
