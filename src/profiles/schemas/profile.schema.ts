@@ -10,7 +10,7 @@ export class Profile extends Document {
   @Prop()
   address: string;
 
-  // 👇 Add this for the One-to-One relationship
+
   @Prop({ type: Types.ObjectId, ref: 'Employee' })
   employee: Employee;
 }
