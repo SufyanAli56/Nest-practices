@@ -4,6 +4,8 @@ import { UsersModule } from './users/users.module';
 import { EmployeesModule } from './employees/employees.module';
 import { ProfilesModule } from './profiles/profiles.module';
 import { EmbeddedUsersModule } from './embedded-users/embedded-users.module';
+import { AuthorsModule } from './authors/authors.module';
+import { BooksModule } from './books/books.module';
 
 @Module({
   imports: [
@@ -12,6 +14,8 @@ import { EmbeddedUsersModule } from './embedded-users/embedded-users.module';
     EmployeesModule,
     ProfilesModule,
     EmbeddedUsersModule,
+    AuthorsModule,
+    BooksModule,
   ],
 })
 export class AppModule {}
