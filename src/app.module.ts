@@ -7,6 +7,8 @@ import { EmbeddedUsersModule } from './embedded-users/embedded-users.module';
 import { AuthorsModule } from './authors/authors.module';
 import { BooksModule } from './books/books.module';
 import { CategoriesModule } from './categories/categories.module';
+import { StudentsModule } from './students/students.module';
+import { CoursesModule } from './courses/courses.module';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { CategoriesModule } from './categories/categories.module';
     AuthorsModule,
     BooksModule,
     CategoriesModule,
+    StudentsModule,
+    CoursesModule,
   ],
 })
 export class AppModule {}
