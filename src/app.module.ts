@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+
 import { UsersModule } from './users/users.module';
 import { EmployeesModule } from './employees/employees.module';
 import { ProfilesModule } from './profiles/profiles.module';
@@ -11,10 +13,20 @@ import { StudentsModule } from './students/students.module';
 import { CoursesModule } from './courses/courses.module';
 import { MoviesModule } from './movies/movies.module';
 import { ActorsModule } from './actors/actors.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/db-nest-api'),
+    ConfigModule.forRoot({
+      isGlobal: true, 
+    }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('MONGO_URL'),
+      }),
+    }),
     UsersModule,
     EmployeesModule,
     ProfilesModule,
@@ -26,6 +38,7 @@ import { ActorsModule } from './actors/actors.module';
     CoursesModule,
     MoviesModule,
     ActorsModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
